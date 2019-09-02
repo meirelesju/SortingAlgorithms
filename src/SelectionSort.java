@@ -16,26 +16,46 @@ import java.util.Scanner;
  */
 public class SelectionSort {
     
-    void Ordena(int A[]) 
-    { 
+    
+    
+    int min (int A[], int i){
         int comprimento = A.length; 
-       
-        for (int i = 0; i < comprimento-1; i++) 
-        { 
-            // Encontra o mínimo elemento de A
             int indiceMin = i; 
             //Inicializa em i+1 porque o indiceMin já tem o indice do primeiro elemento a ser comparado
             for (int j = i+1; j < comprimento; j++){ 
                 if (A[j] < A[indiceMin]){ 
                     indiceMin = j; 
                 }
-            }//"retorna" o índice do elemento mínimo de A
-            
-            // Troca a posição do elemento mínimo com o primeiro elemento de A
-            //Armazena o valor minimo pois quando faz a troca no "A[indiceMin] = A[i]", o valor minimo é apagado
-            int min = A[indiceMin]; 
+            }
+        
+        return indiceMin;
+    }
+    
+    void troca(int A[], int indiceMin, int i){
+        
+        //Armazena o valor minimo pois quando faz a troca no "A[indiceMin] = A[i]", o valor minimo é apagado
+        int min = A[indiceMin]; 
             A[indiceMin] = A[i]; 
             A[i] = min; 
+        
+        
+    }
+    
+    
+    
+    void Ordena(int A[]) 
+    { 
+        int comprimento = A.length; 
+       
+        for (int i = 0; i < comprimento-1; i++) 
+        { 
+             ///retorna o índice do elemento mínimo de A
+           int indiceMin = min(A, i);
+            
+            
+            // Troca a posição do elemento mínimo com o primeiro elemento de A
+            troca(A, indiceMin, i);
+            
         } 
     } 
   
